@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="rootPaneMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ContactListManagerController">
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Edition">
+               <content>
+                  <BorderPane fx:id="rootPane" prefHeight="200.0" prefWidth="200.0">
+                     <left>
+                        <TreeView fx:id="tree" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                     </left>
+                     <bottom>
+                        <HBox prefHeight="34.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Separator orientation="VERTICAL" prefHeight="34.0" prefWidth="16.0" />
+                              <Button mnemonicParsing="false" onAction="#addElement" text="Ajouter">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Separator orientation="VERTICAL" prefHeight="34.0" prefWidth="38.0" />
+                              <Button mnemonicParsing="false" onAction="#deleteElement" text="Supprimer">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </bottom>
+                  </BorderPane>
+               </content>
+            </Tab>
+            <Tab text="Graphiques">
+               <content>
+                  <HBox>
+                     <children>
+                        <VBox alignment="CENTER_LEFT" prefHeight="346.0" prefWidth="240.0">
+                           <children>
+                              <PieChart fx:id="groupPieChart" prefHeight="288.0" prefWidth="275.0" />
+                              <HBox alignment="CENTER" prefHeight="78.0" prefWidth="239.0">
+                                 <children>
+                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#refresh" text="Recharger" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox alignment="CENTER_RIGHT" prefHeight="346.0" prefWidth="334.0">
+                           <children>
+                              <BarChart fx:id="contactBarChart" prefHeight="346.0" prefWidth="268.0">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis side="LEFT" />
+                                </yAxis>
+                              </BarChart>
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Fichier">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#load" text="Charger..." />
+                  <MenuItem fx:id="saveButton" mnemonicParsing="false" onAction="#save" text="Sauvegarder" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveAs" text="Sauvegarder sous..." />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
